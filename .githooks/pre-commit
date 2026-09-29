@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# The pin holds and the generated files match the tokens. Enable once per clone:
+#   git config core.hooksPath .githooks
+set -e
+cd "$(git rev-parse --show-toplevel)"
+npm run --silent check

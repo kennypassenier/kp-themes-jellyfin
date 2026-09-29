@@ -5,17 +5,17 @@
 // and every @font-face from css/fonts.css; nothing is a hand-copied value. Two
 // outputs, the two routes compared in README.md:
 //
-//   node research/jellyfin-dark/generate.mjs
+//   node generate.mjs
 //       route B (chosen): writes kp-jellyfin-dark.css, the standalone theme
 //       written against Jellyfin 10.11.11's own classes, and
 //       custom-css.paste.css, the exact text for Dashboard > Branding >
 //       Custom CSS (intro-skipper import + the theme + skip timing + the
 //       ActorPlus badge rules).
-//   node research/jellyfin-dark/generate.mjs --route=a --out=<file>
+//   node generate.mjs --route=a --out=<file>
 //       route A (measured, not chosen): an overlay placed after ElegantFin that
 //       re-points ElegantFin's custom properties and patches the literal
 //       colours it hard-codes. Printed counts are what README.md quotes.
-//   node research/jellyfin-dark/generate.mjs --check=<jellyfin-web dir>
+//   node generate.mjs --check=<jellyfin-web dir>
 //       lists every class name the route B selectors use that does not occur
 //       in the given jellyfin-web build (re-run on each Jellyfin upgrade).
 //
@@ -24,11 +24,12 @@
 
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { contrast, hsl, parseHsl } from '../../js/contrast.js';
+import { contrast, hsl, parseHsl } from './vendor/kp-themes/js/contrast.js';
 
 const here = new URL('.', import.meta.url);
-const root = new URL('../../', import.meta.url);
-const pkg = JSON.parse(readFileSync(new URL('package.json', root), 'utf8'));
+/** The tokens, from the kp-themes release vendor/PIN names. */
+const root = new URL('./vendor/kp-themes/', import.meta.url);
+const pkg = { version: readFileSync(new URL('VERSION', root), 'utf8').trim() };
 const RELEASE = `v${pkg.version}`;
 const CDN = `https://cdn.jsdelivr.net/gh/kennypassenier/kp-themes@${RELEASE}/`;
 const JELLYFIN = '10.11.11';

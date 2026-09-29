@@ -1,6 +1,19 @@
-# kp "dark" on Kenny's Jellyfin 10.11.11
+# kp-themes-jellyfin
 
-Task (2026-09-17): replace the ElegantFin look on Kenny's Jellyfin **10.11.11** with the one kp theme `dark`. Keep the intro-skipper import, `--skip-hide-duration` and the ActorPlus badge rules. Demo: [`demo.html`](demo.html). Earlier research on Jellyfin 12: [`../jellyfin/README.md`](../jellyfin/README.md). That research said 10.11 has no `--jf-*` variable layer, so neither route here uses one.
+The kp-themes `dark` theme as Jellyfin custom CSS (Jellyfin 10.11.11):
+[`kp-jellyfin-dark.css`](kp-jellyfin-dark.css) is the theme, and
+[`custom-css.paste.css`](custom-css.paste.css) is what goes in Dashboard →
+General → Custom CSS (the intro-skipper import, the theme, the skip timing and
+the ActorPlus badge rules). `node generate.mjs` writes both;
+`node generate.mjs --check=<jellyfin-web dir>` confirms every class name it
+styles exists in a Jellyfin build (re-run on each Jellyfin upgrade).
+
+Below is the research record that chose this route, from kp-themes'
+`research/jellyfin-dark/` (its links to other kp-themes research point there).
+
+## kp "dark" on Kenny's Jellyfin 10.11.11
+
+Task (2026-09-17): replace the ElegantFin look on Kenny's Jellyfin **10.11.11** with the one kp theme `dark`. Keep the intro-skipper import, `--skip-hide-duration` and the ActorPlus badge rules. Demo: [`demo.html`](demo.html). Earlier research on Jellyfin 12: [kp-themes `research/jellyfin/README.md`](https://github.com/kennypassenier/kp-themes/blob/main/research/jellyfin/README.md). That research said 10.11 has no `--jf-*` variable layer, so neither route here uses one.
 
 **Measured on** a throwaway `jellyfin/jellyfin:10.11.11` container at `127.0.0.1:38611` with no media library. I made a local admin through the wizard's endpoints and one empty playlist so a detail page exists. Every paste went in through the real Dashboard → Branding page, and `/Branding/Css` returned the same byte count as the file. Chromium and Firefox, via Playwright. The container was then stopped and removed (`docker rm`); the image is still on disk. No other host was contacted except jsDelivr and GitHub.
 
@@ -70,3 +83,27 @@ The exact text is **[`custom-css.paste.css`](custom-css.paste.css)**: 22,288 B, 
 ```
 
 The ElegantFin `@import` line is gone. I didn't have Kenny's exact badge lines, so the generated block replaces them. If his lines also do something other than clear the rounded corners, carry that part over. Once the file ships in a kp-themes release, the middle part can become one pinned `@import` of it.
+
+## Where the colours come from
+
+`generate.mjs` reads the tokens of
+[kp-themes](https://github.com/kennypassenier/kp-themes) from
+`vendor/kp-themes/`: the unpacked `tokens.tar` of the release `vendor/PIN`
+names, with its sha256. `npm run check` rebuilds that tar from the copy and
+refuses a mismatch, then refuses any generated file that drifted from the
+tokens. A colour change in kp-themes reaches this repository only when the pin
+moves:
+
+```sh
+npm run vendor -- 8.1.0     # download, verify, unpack, rewrite vendor/PIN
+npm run generate            # then read the diff and commit
+```
+
+The commit hook runs `npm run check`; enable it once per clone with
+`git config core.hooksPath .githooks`.
+
+## History
+
+Split out of kp-themes at 8.0.0 (2026-09-29) with its history: `git log` shows
+the kp-themes commits that touched these files, with their original messages
+and IDs.

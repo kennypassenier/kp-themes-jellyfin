@@ -1,0 +1,17 @@
+{
+    "name": "kp-themes-jellyfin",
+    "version": "1.0.0",
+    "description": "The kp-themes dark theme as Jellyfin custom CSS.",
+    "private": true,
+    "type": "module",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kennypassenier/kp-themes-jellyfin.git"
+    },
+    "scripts": {
+        "generate": "node generate.mjs",
+        "check": "node gates/check-vendor.mjs && node generate.mjs && git diff --exit-code -- kp-jellyfin-dark.css custom-css.paste.css",
+        "vendor": "scripts/vendor-kp-themes.sh"
+    }
+}

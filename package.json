@@ -1,6 +1,6 @@
 {
     "name": "kp-themes-jellyfin",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "The kp-themes dark theme as Jellyfin custom CSS.",
     "private": true,
     "type": "module",

@@ -1,4 +1,4 @@
-/* @kp-soft/themes v8.0.0 — css/themes.css
+/* @kp-soft/themes v10.1.0 — css/themes.css
    The seven house themes as plain CSS custom properties, plus the shared
    register/texture machinery. No Tailwind here: a Tailwind v4 consumer
    also imports css/tailwind-bridge.css; the cyberpunk register (HUD
@@ -18,8 +18,12 @@
    file order. Consequence taken deliberately: a consumer's own UNLAYERED
    CSS wins over everything here, components included — which is the right
    default for a package whose posture is that a consumer overrides it.
-   Token declarations stay outside the layers. */
-@layer kp.base, kp.components, kp.register, kp.layout, kp.utilities;
+   Token declarations stay outside the layers.
+   kp.signature [scope-140] holds each theme's approved signature for the
+   progress bar and ten elements, at the end of its register file: it comes
+   right after kp.register, so it draws over the register as the approved
+   demos did, whatever the weight of a register selector. */
+@layer kp.base, kp.components, kp.register, kp.signature, kp.layout, kp.utilities;
 
 /* ═══════════════════════════════════════════════════════════════════
    The seven themes (T1, T9). Each block is a COMPLETE token set; the
@@ -32,8 +36,8 @@
    JavaScript on the page, which is where a vendored stylesheet from one
    version meets a registry from another. js/diagnostics.js reads them. */
 :root {
-    --kp-themes-version: '8.0.0';
-    --kp-themes-names: 'formal light dark cyberpunk synthwave pastel terminal forest high-contrast sepia blueprint solstice brutalism deco phantom shade-light shade-dark retro grotesk lapis nostromo titanium';
+    --kp-themes-version: '10.1.0';
+    --kp-themes-names: 'formal light dark cyberpunk synthwave pastel terminal forest blueprint solstice brutalism deco phantom grotesk nostromo titanium';
 }
 
 :root,
@@ -105,7 +109,7 @@
     --fx-signal-foreground: hsl(38, 70%, 0%);
     --fx-notch: 0px;
     --fx-duration: 180ms;
-    --fx-ease: cubic-bezier(0.2, 0, 0, 1);
+    --fx-ease: linear;
     --theme-font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(30, 40%, 88%);
@@ -233,8 +237,8 @@
     --fx-signal: hsl(190, 80%, 40%);
     --fx-signal-foreground: hsl(190, 95%, 0%);
     --fx-notch: 0px;
-    --fx-duration: 150ms;
-    --fx-ease: cubic-bezier(0.2, 0, 0, 1);
+    --fx-duration: 200ms;
+    --fx-ease: cubic-bezier(0.16, 1, 0.3, 1);
     --theme-font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(190, 80%, 92%);
@@ -366,7 +370,7 @@
     --fx-signal-foreground: hsl(220, 24%, 6%);
     --fx-notch: 0.55rem;
     --fx-duration: 220ms;
-    --fx-ease: cubic-bezier(0.16, 0.84, 0.28, 1);
+    --fx-ease: cubic-bezier(0.22, 1, 0.36, 1);
     --theme-font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
     --theme-font-mono: 'KP Ticker Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(220, 16%, 13%);
@@ -499,7 +503,7 @@
     --fx-ease: cubic-bezier(0.2, 0.9, 0.2, 1);
     --fx-overprint: hsl(184, 100%, 50%);
     --fx-scanline: hsl(56, 98%, 51%);
-    --fx-lift: 1px;
+    --fx-lift: 0px;
     --fx-hot: hsl(50, 12%, 80%);
     --fx-hot-alarm: hsl(353, 84%, 75%);
     --fx-shadow-offset: 0px;
@@ -622,11 +626,11 @@
     --fx-signal: hsl(341, 100%, 64%);
     --fx-signal-foreground: hsl(263, 89%, 7%);
     --fx-notch: 0px;
-    --fx-duration: 220ms;
-    --fx-ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+    --fx-duration: 225ms;
+    --fx-ease: cubic-bezier(0.65, 0, 0.35, 1);
     --fx-overprint: hsl(179, 94%, 59%);
     --fx-scanline: hsl(260, 100%, 91%);
-    --fx-lift: 1px;
+    --fx-lift: 0px;
     --fx-hot: hsl(260, 100%, 80%);
     --fx-hot-alarm: hsl(356, 99%, 75%);
     --fx-shadow-offset: 0px;
@@ -748,12 +752,12 @@
     --fx-signal-foreground: hsl(150, 60%, 0%);
     --fx-notch: 0px;
     --fx-duration: 220ms;
-    --fx-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --fx-ease: linear(0 0%, 0.014 5%, 0.052 10%, 0.112 15%, 0.189 20%, 0.28 25%, 0.38 30%, 0.486 35%, 0.594 40%, 0.7 45%, 0.8 50%, 0.891 55%, 0.968 60%, 1.028 65%, 1.066 70%, 1.08 75%, 1.072 80%, 1.052 85%, 1.028 90%, 1.008 95%, 1 100%);
     --theme-font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(200, 60%, 62%);
     --fx-scanline: hsl(150, 40%, 88%);
-    --fx-lift: 2px;
+    --fx-lift: 0px;
     --fx-hot: hsl(285, 25%, 25%);
     --fx-hot-alarm: hsl(355, 65%, 30%);
     --fx-shadow-offset: 0px;
@@ -876,8 +880,8 @@
     --fx-signal: hsl(65, 90%, 22%);
     --fx-signal-foreground: hsl(65, 100%, 100%);
     --fx-notch: 2px;
-    --fx-duration: 90ms;
-    --fx-ease: steps(2, end);
+    --fx-duration: 34ms;
+    --fx-ease: steps(1, jump-end);
     --theme-font-display: 'KP Tech Mono', 'Share Tech Mono', ui-monospace, monospace;
     --theme-font-mono: 'KP Tech Mono', 'Share Tech Mono', ui-monospace, Menlo, monospace;
     --fx-overprint: hsl(65, 90%, 50%);
@@ -1006,12 +1010,12 @@
     --fx-signal-foreground: hsl(200, 60%, 0%);
     --fx-notch: 0px;
     --fx-duration: 200ms;
-    --fx-ease: cubic-bezier(0.33, 0, 0.15, 1);
+    --fx-ease: linear(0 0%, 0.01 5%, 0.032 10%, 0.072 15%, 0.133 20%, 0.211 25%, 0.302 30%, 0.398 35%, 0.493 40%, 0.582 45%, 0.662 50%, 0.732 55%, 0.791 60%, 0.84 65%, 0.881 70%, 0.913 75%, 0.939 80%, 0.96 85%, 0.977 90%, 0.99 95%, 1 100%);
     --theme-font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(24, 55%, 86%);
     --fx-scanline: hsl(24, 55%, 86%);
-    --fx-lift: 2px;
+    --fx-lift: 0px;
     --fx-hot: hsl(160, 28%, 25%);
     --fx-hot-alarm: hsl(8, 62%, 30%);
     --fx-shadow-offset: 0px;
@@ -1065,264 +1069,6 @@
     --destructive-hover: hsl(8, 76%, 32%);
     --destructive-active: hsl(5, 100%, 25%);
     --destructive-disabled: hsl(9, 52%, 51%);
-}
-
-[data-theme='high-contrast'] {
-    /* Black on white, one signal yellow, nothing in between. */
-    --background: hsl(0, 0%, 100%);
-    --foreground: hsl(0, 0%, 0%);
-    --card: hsl(0, 0%, 100%);
-    --card-foreground: hsl(0, 0%, 0%);
-    --popover: hsl(0, 0%, 100%);
-    --popover-foreground: hsl(0, 0%, 0%);
-    --primary: hsl(220, 100%, 30%);
-    --primary-foreground: hsl(0, 0%, 100%);
-    --secondary: hsl(0, 0%, 100%);
-    --secondary-foreground: hsl(0, 0%, 0%);
-    --muted: hsl(0, 0%, 94%);
-    --muted-foreground: hsl(0, 0%, 20%);
-    --accent: hsl(48, 100%, 50%);
-    --accent-foreground: hsl(0, 0%, 0%);
-    --destructive: hsl(0, 100%, 32%);
-    --destructive-foreground: hsl(0, 0%, 100%);
-    --success: hsl(140, 100%, 20%);
-    --success-foreground: hsl(0, 0%, 100%);
-    --warning: hsl(30, 100%, 28%);
-    --warning-foreground: hsl(0, 0%, 100%);
-    --info: hsl(220, 100%, 30%);
-    --info-foreground: hsl(0, 0%, 100%);
-    --border: hsl(0, 0%, 45%);
-    --border-strong: hsl(0, 0%, 0%);
-    --input: hsl(0, 0%, 0%);
-    --ring: hsl(220, 100%, 40%);
-    --selected: hsl(220, 100%, 35%);
-    --chart-1: hsl(220, 100%, 32%);
-    --chart-2: hsl(0, 100%, 32%);
-    --chart-3: hsl(140, 100%, 20%);
-    --chart-4: hsl(30, 100%, 28%);
-    --chart-5: hsl(285, 100%, 32%);
-    /* Code: the keyword and the string of a code block, from the chart hues, dark or light enough to be read rather than only seen [fix-58]. */
-    --code-keyword: hsl(220, 100%, 32%);
-    --code-string: hsl(0, 100%, 32%);
-    --sidebar-background: hsl(0, 0%, 100%);
-    --sidebar-foreground: hsl(0, 0%, 0%);
-    --sidebar-primary: hsl(220, 100%, 30%);
-    --sidebar-primary-foreground: hsl(0, 0%, 100%);
-    --sidebar-accent: hsl(0, 0%, 92%);
-    --sidebar-accent-foreground: hsl(0, 0%, 0%);
-    --sidebar-border: hsl(0, 0%, 45%);
-    --sidebar-ring: hsl(220, 100%, 40%);
-
-    /* Status badges: deep plates with white ink, not pale tints. */
-    --status-draft: hsl(0, 0%, 25%);
-    --status-draft-foreground: hsl(0, 0%, 100%);
-    --status-sent: hsl(220, 100%, 32%);
-    --status-sent-foreground: hsl(0, 0%, 100%);
-    --status-screening: hsl(30, 100%, 26%);
-    --status-screening-foreground: hsl(0, 0%, 100%);
-    --status-interview: hsl(285, 100%, 32%);
-    --status-interview-foreground: hsl(0, 0%, 100%);
-    --status-offer: hsl(100, 100%, 45%);
-    --status-offer-foreground: hsl(0, 0%, 0%);
-    --status-rejected: hsl(0, 100%, 30%);
-    --status-rejected-foreground: hsl(0, 0%, 100%);
-    --status-withdrawn: hsl(0, 0%, 40%);
-    --status-withdrawn-foreground: hsl(0, 0%, 100%);
-    --color-scheme: light;
-    --theme-font-body: 'Atkinson Hyperlegible', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
-    --radius: 0.25rem;
-    --fx-signal: hsl(45, 100%, 28%);
-    --fx-signal-foreground: hsl(0, 0%, 100%);
-    --fx-notch: 0px;
-    --fx-duration: 120ms;
-    --fx-ease: linear;
-    --theme-font-display: 'Atkinson Hyperlegible', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
-    --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-    --fx-overprint: hsl(48, 100%, 50%);
-    --fx-scanline: hsl(48, 100%, 50%);
-    --fx-lift: 0px;
-    --fx-hot: hsl(0, 0%, 25%);
-    --fx-hot-alarm: hsl(0, 100%, 30%);
-    --fx-shadow-offset: 0px;
-    --chart-pattern-1: none;
-    --chart-pattern-2: none;
-    --chart-pattern-3: none;
-    --chart-pattern-4: none;
-    --chart-pattern-5: none;
-
-    /* The spacing scale [TH94, AR18]. xs, sm and md carry the values they already had as fallbacks in css/components.css, so declaring them shifts nothing (S20); lg, xl and 2xl are the new steps above them. A theme may retune the whole rhythm here. */
-    --kp-space-xs: 0.25rem;
-    --kp-space-sm: 0.5rem;
-    --kp-space-md: 0.75rem;
-    --kp-space-lg: 1rem;
-    --kp-space-xl: 1.5rem;
-    --kp-space-2xl: 2rem;
-    --kp-text-xs: 0.75rem;
-    --kp-text-sm: 0.8125rem;
-    --kp-text-md: 1rem;
-
-    /* The hero surface: the sources AR38 names, so a theme can give the opening surface its own ground [TH116, S47]. A one-ground theme points them at its app values. */
-    --surface-hero-bg: hsl(0, 0%, 100%);
-    --surface-hero-fg: hsl(0, 0%, 0%);
-    --surface-hero-fg-2: hsl(220, 100%, 30%);
-    --surface-hero-muted: hsl(0, 0%, 20%);
-    --surface-hero-border: hsl(0, 0%, 0%);
-    --surface-hero-primary: hsl(220, 100%, 30%);
-    --surface-hero-primary-foreground: hsl(0, 0%, 100%);
-    --surface-hero-danger: hsl(0, 100%, 32%);
-    --surface-hero-danger-foreground: hsl(0, 0%, 100%);
-    --surface-hero-card: hsl(0, 0%, 100%);
-    --surface-hero-card-foreground: hsl(0, 0%, 0%);
-
-    /* The display step of the typography scale: the size of a headline on a hero [S47, critic #19]. */
-    --kp-text-display: clamp(2rem, 4vw, 3rem);
-
-    /* Derived interaction states — see gates/generate-themes.mjs. */
-    --link: hsl(220, 100%, 30%);
-    --link-visited: hsl(275, 63%, 30%);
-    --focus-ring: hsl(0, 0%, 0%);
-    --focus-ring-contrast: hsl(0, 0%, 100%);
-    --primary-hover: hsl(226, 100%, 26%);
-    --primary-active: hsl(238, 100%, 22%);
-    --primary-disabled: hsl(220, 74%, 41%);
-    --secondary-hover: hsl(44, 0%, 92%);
-    --secondary-active: hsl(44, 0%, 84%);
-    --secondary-disabled: hsl(60, 100%, 100%);
-    --accent-hover: hsl(47, 100%, 46%);
-    --accent-active: hsl(46, 100%, 42%);
-    --accent-disabled: hsl(53, 100%, 64%);
-    --destructive-hover: hsl(0, 100%, 28%);
-    --destructive-active: hsl(4, 78%, 25%);
-    --destructive-disabled: hsl(4, 68%, 45%);
-}
-
-[data-theme='sepia'] {
-    /* Warm parchment and brown ink. The quiet one. */
-    --background: hsl(38, 42%, 94%);
-    --foreground: hsl(28, 45%, 16%);
-    --card: hsl(38, 50%, 97%);
-    --card-foreground: hsl(28, 45%, 16%);
-    --popover: hsl(38, 55%, 98%);
-    --popover-foreground: hsl(28, 45%, 16%);
-    --primary: hsl(24, 55%, 32%);
-    --primary-foreground: hsl(38, 55%, 97%);
-    --secondary: hsl(36, 30%, 88%);
-    --secondary-foreground: hsl(28, 40%, 22%);
-    --muted: hsl(36, 28%, 90%);
-    --muted-foreground: hsl(28, 22%, 36%);
-    --accent: hsl(30, 55%, 86%);
-    --accent-foreground: hsl(24, 60%, 20%);
-    --destructive: hsl(6, 60%, 38%);
-    --destructive-foreground: hsl(38, 55%, 97%);
-    --success: hsl(90, 30%, 86%);
-    --success-foreground: hsl(95, 55%, 20%);
-    --warning: hsl(40, 70%, 84%);
-    --warning-foreground: hsl(32, 85%, 26%);
-    --info: hsl(200, 30%, 86%);
-    --info-foreground: hsl(205, 60%, 26%);
-    --border: hsl(34, 25%, 83%);
-    --border-strong: hsl(30, 22%, 52%);
-    --input: hsl(30, 22%, 52%);
-    --ring: hsl(24, 55%, 40%);
-    --selected: hsl(24, 45%, 53%);
-    --chart-1: hsl(24, 55%, 38%);
-    --chart-2: hsl(95, 35%, 30%);
-    --chart-3: hsl(200, 40%, 34%);
-    --chart-4: hsl(340, 35%, 40%);
-    --chart-5: hsl(45, 65%, 32%);
-    /* Code: the keyword and the string of a code block, from the chart hues, dark or light enough to be read rather than only seen [fix-58]. */
-    --code-keyword: hsl(24, 55%, 38%);
-    --code-string: hsl(95, 35%, 30%);
-    --sidebar-background: hsl(38, 40%, 91%);
-    --sidebar-foreground: hsl(28, 45%, 18%);
-    --sidebar-primary: hsl(24, 55%, 32%);
-    --sidebar-primary-foreground: hsl(38, 55%, 97%);
-    --sidebar-accent: hsl(36, 30%, 86%);
-    --sidebar-accent-foreground: hsl(28, 40%, 22%);
-    --sidebar-border: hsl(34, 25%, 82%);
-    --sidebar-ring: hsl(24, 55%, 40%);
-
-    /* Status badges: warm tints on parchment, ink in the same family. */
-    --status-draft: hsl(36, 25%, 86%);
-    --status-draft-foreground: hsl(28, 30%, 28%);
-    --status-sent: hsl(24, 45%, 86%);
-    --status-sent-foreground: hsl(24, 60%, 26%);
-    --status-screening: hsl(45, 60%, 84%);
-    --status-screening-foreground: hsl(38, 80%, 22%);
-    --status-interview: hsl(280, 25%, 88%);
-    --status-interview-foreground: hsl(285, 45%, 30%);
-    --status-offer: hsl(90, 35%, 84%);
-    --status-offer-foreground: hsl(95, 60%, 18%);
-    --status-rejected: hsl(6, 60%, 76%);
-    --status-rejected-foreground: hsl(6, 65%, 28%);
-    --status-withdrawn: hsl(34, 18%, 84%);
-    --status-withdrawn-foreground: hsl(30, 20%, 34%);
-    --color-scheme: light;
-    --theme-font-body: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
-    --radius: 0.375rem;
-    --fx-signal: hsl(24, 60%, 40%);
-    --fx-signal-foreground: hsl(38, 55%, 97%);
-    --fx-notch: 0px;
-    --fx-duration: 220ms;
-    --fx-ease: cubic-bezier(0.4, 0, 0.2, 1);
-    --theme-font-display: 'Instrument Serif', ui-serif, Georgia, serif;
-    --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-    --fx-overprint: hsl(24, 40%, 70%);
-    --fx-scanline: hsl(30, 40%, 80%);
-    --fx-lift: 0px;
-    --fx-hot: hsl(28, 45%, 25%);
-    --fx-hot-alarm: hsl(6, 60%, 30%);
-    --fx-shadow-offset: 0px;
-    --chart-pattern-1: none;
-    --chart-pattern-2: none;
-    --chart-pattern-3: none;
-    --chart-pattern-4: none;
-    --chart-pattern-5: none;
-
-    /* The spacing scale [TH94, AR18]. xs, sm and md carry the values they already had as fallbacks in css/components.css, so declaring them shifts nothing (S20); lg, xl and 2xl are the new steps above them. A theme may retune the whole rhythm here. */
-    --kp-space-xs: 0.25rem;
-    --kp-space-sm: 0.5rem;
-    --kp-space-md: 0.75rem;
-    --kp-space-lg: 1rem;
-    --kp-space-xl: 1.5rem;
-    --kp-space-2xl: 2rem;
-    --kp-text-xs: 0.75rem;
-    --kp-text-sm: 0.8125rem;
-    --kp-text-md: 1rem;
-
-    /* The hero surface: the sources AR38 names, so a theme can give the opening surface its own ground [TH116, S47]. A one-ground theme points them at its app values. */
-    --surface-hero-bg: hsl(38, 42%, 94%);
-    --surface-hero-fg: hsl(28, 45%, 16%);
-    --surface-hero-fg-2: hsl(24, 55%, 32%);
-    --surface-hero-muted: hsl(28, 22%, 36%);
-    --surface-hero-border: hsl(30, 22%, 52%);
-    --surface-hero-primary: hsl(24, 55%, 32%);
-    --surface-hero-primary-foreground: hsl(38, 55%, 97%);
-    --surface-hero-danger: hsl(6, 60%, 38%);
-    --surface-hero-danger-foreground: hsl(38, 55%, 97%);
-    --surface-hero-card: hsl(38, 50%, 97%);
-    --surface-hero-card-foreground: hsl(28, 45%, 16%);
-
-    /* The display step of the typography scale: the size of a headline on a hero [S47, critic #19]. */
-    --kp-text-display: clamp(2rem, 4vw, 3rem);
-
-    /* Derived interaction states — see gates/generate-themes.mjs. */
-    --link: hsl(24, 55%, 32%);
-    --link-visited: hsl(49, 100%, 13%);
-    --focus-ring: hsl(28, 45%, 16%);
-    --focus-ring-contrast: hsl(38, 42%, 94%);
-    --primary-hover: hsl(25, 71%, 25%);
-    --primary-active: hsl(26, 100%, 18%);
-    --primary-disabled: hsl(23, 42%, 43%);
-    --secondary-hover: hsl(36, 18%, 80%);
-    --secondary-active: hsl(36, 13%, 73%);
-    --secondary-disabled: hsl(55, 100%, 98%);
-    --accent-hover: hsl(30, 35%, 78%);
-    --accent-active: hsl(30, 26%, 71%);
-    --accent-disabled: hsl(46, 100%, 95%);
-    --destructive-hover: hsl(5, 73%, 31%);
-    --destructive-active: hsl(1, 99%, 23%);
-    --destructive-disabled: hsl(7, 48%, 49%);
 }
 
 [data-theme='blueprint'] {
@@ -1393,7 +1139,7 @@
     --fx-signal-foreground: hsl(215, 70%, 10%);
     --fx-notch: 0px;
     --fx-duration: 160ms;
-    --fx-ease: linear;
+    --fx-ease: linear(0, 0.031 10%, 0.125 20%, 0.875 80%, 0.969 90%, 1);
     --theme-font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
     --theme-font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(190, 60%, 40%);
@@ -1651,7 +1397,7 @@
     --fx-signal-foreground: hsl(0, 0%, 7%);
     --fx-notch: 0px;
     --fx-duration: 100ms;
-    --fx-ease: cubic-bezier(0.2, 0, 0, 1);
+    --fx-ease: cubic-bezier(0.6, 0, 0.9, 0.5);
     --theme-font-display: 'Archivo Black', 'Archivo', Impact, Haettenschweiler, 'Arial Black', sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(48, 100%, 60%);
@@ -1781,7 +1527,7 @@
     --fx-signal-foreground: hsl(355, 60%, 8%);
     --fx-notch: 0px;
     --fx-duration: 160ms;
-    --fx-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --fx-ease: cubic-bezier(0.22, 1, 0.36, 1);
     --theme-font-display: 'Poiret One', 'Josefin Sans', ui-sans-serif, sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(43, 65%, 52%);
@@ -1910,7 +1656,7 @@
     --fx-signal-foreground: hsl(0, 0%, 4%);
     --fx-notch: 6px;
     --fx-duration: 120ms;
-    --fx-ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+    --fx-ease: cubic-bezier(0.81, 0, 0, 1);
     --theme-font-display: 'Barlow Condensed', 'Barlow', ui-sans-serif, sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(45, 100%, 55%);
@@ -1969,393 +1715,6 @@
     --destructive-hover: hsl(357, 100%, 64%);
     --destructive-active: hsl(1, 74%, 68%);
     --destructive-disabled: hsl(352, 100%, 43%);
-}
-
-[data-theme='shade-light'] {
-    /* Shade, the light half: a book read in the shade, not in the sun. Solarized-derived, medium contrast, accents as plates. */
-    --background: hsl(44, 87%, 94%);
-    --foreground: hsl(194, 14%, 36%);
-    --card: hsl(44, 87%, 97%);
-    --card-foreground: hsl(194, 14%, 36%);
-    --popover: hsl(44, 90%, 99%);
-    --popover-foreground: hsl(194, 14%, 36%);
-    --primary: hsl(205, 70%, 38%);
-    --primary-foreground: hsl(44, 87%, 96%);
-    --secondary: hsl(46, 42%, 88%);
-    --secondary-foreground: hsl(194, 25%, 22%);
-    --muted: hsl(46, 40%, 90%);
-    --muted-foreground: hsl(194, 14%, 39%);
-    --accent: hsl(175, 60%, 36%);
-    --accent-foreground: hsl(44, 87%, 96%);
-    --destructive: hsl(1, 71%, 42%);
-    --destructive-foreground: hsl(44, 87%, 96%);
-    --success: hsl(68, 100%, 22%);
-    --success-foreground: hsl(60, 80%, 94%);
-    --warning: hsl(45, 100%, 28%);
-    --warning-foreground: hsl(45, 80%, 94%);
-    --info: hsl(205, 70%, 34%);
-    --info-foreground: hsl(44, 87%, 96%);
-    --border: hsl(46, 42%, 84%);
-    --border-strong: hsl(180, 8%, 48%);
-    --input: hsl(180, 8%, 48%);
-    --ring: hsl(205, 70%, 38%);
-    --selected: hsl(205, 70%, 38%);
-    --chart-1: hsl(205, 70%, 38%);
-    --chart-2: hsl(45, 100%, 32%);
-    --chart-3: hsl(331, 64%, 48%);
-    --chart-4: hsl(175, 59%, 34%);
-    --chart-5: hsl(237, 43%, 56%);
-    /* Code: the keyword and the string of a code block, from the chart hues, dark or light enough to be read rather than only seen [fix-58]. */
-    --code-keyword: hsl(205, 70%, 38%);
-    --code-string: hsl(45, 100%, 28%);
-    --sidebar-background: hsl(192, 100%, 11%);
-    --sidebar-foreground: hsl(180, 7%, 70%);
-    --sidebar-primary: hsl(205, 69%, 55%);
-    --sidebar-primary-foreground: hsl(192, 100%, 11%);
-    --sidebar-accent: hsl(192, 81%, 14%);
-    --sidebar-accent-foreground: hsl(180, 7%, 75%);
-    --sidebar-border: hsl(192, 50%, 20%);
-    --sidebar-ring: hsl(205, 69%, 55%);
-
-    /* Status badges (application pipeline): the accents as plates with light ink. */
-    --status-draft: hsl(194, 14%, 40%);
-    --status-draft-foreground: hsl(44, 87%, 96%);
-    --status-sent: hsl(205, 70%, 36%);
-    --status-sent-foreground: hsl(44, 87%, 96%);
-    --status-screening: hsl(45, 100%, 28%);
-    --status-screening-foreground: hsl(45, 80%, 94%);
-    --status-interview: hsl(237, 43%, 48%);
-    --status-interview-foreground: hsl(44, 87%, 96%);
-    --status-offer: hsl(68, 100%, 24%);
-    --status-offer-foreground: hsl(60, 80%, 94%);
-    --status-rejected: hsl(1, 71%, 40%);
-    --status-rejected-foreground: hsl(44, 87%, 96%);
-    --status-withdrawn: hsl(180, 7%, 40%);
-    --status-withdrawn-foreground: hsl(44, 87%, 96%);
-    --color-scheme: light;
-    --theme-font-body: 'KP Shade Sans', 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
-    --radius: 0.25rem;
-    --fx-signal: hsl(331, 64%, 46%);
-    --fx-signal-foreground: hsl(44, 87%, 96%);
-    --fx-notch: 0px;
-    --fx-duration: 180ms;
-    --fx-ease: cubic-bezier(0.2, 0, 0, 1);
-    --theme-font-display: 'Source Serif 4', ui-serif, Georgia, serif;
-    --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-    --fx-overprint: hsl(175, 60%, 36%);
-    --fx-scanline: hsl(180, 8%, 48%);
-    --fx-lift: 0px;
-    --fx-hot: hsl(194, 14%, 25%);
-    --fx-hot-alarm: hsl(1, 71%, 30%);
-    --fx-shadow-offset: 0px;
-    --chart-pattern-1: none;
-    --chart-pattern-2: none;
-    --chart-pattern-3: none;
-    --chart-pattern-4: none;
-    --chart-pattern-5: none;
-
-    /* The spacing scale [TH94, AR18]. xs, sm and md carry the values they already had as fallbacks in css/components.css, so declaring them shifts nothing (S20); lg, xl and 2xl are the new steps above them. A theme may retune the whole rhythm here. */
-    --kp-space-xs: 0.25rem;
-    --kp-space-sm: 0.5rem;
-    --kp-space-md: 0.75rem;
-    --kp-space-lg: 1rem;
-    --kp-space-xl: 1.5rem;
-    --kp-space-2xl: 2rem;
-    --kp-text-xs: 0.75rem;
-    --kp-text-sm: 0.8125rem;
-    --kp-text-md: 1rem;
-
-    /* The hero surface: the sources AR38 names, so a theme can give the opening surface its own ground [TH116, S47]. A one-ground theme points them at its app values. */
-    --surface-hero-bg: hsl(44, 87%, 94%);
-    --surface-hero-fg: hsl(194, 14%, 36%);
-    --surface-hero-fg-2: hsl(205, 70%, 38%);
-    --surface-hero-muted: hsl(194, 14%, 40%);
-    --surface-hero-border: hsl(180, 8%, 48%);
-    --surface-hero-primary: hsl(205, 70%, 38%);
-    --surface-hero-primary-foreground: hsl(44, 87%, 96%);
-    --surface-hero-danger: hsl(1, 71%, 42%);
-    --surface-hero-danger-foreground: hsl(44, 87%, 96%);
-    --surface-hero-card: hsl(44, 87%, 97%);
-    --surface-hero-card-foreground: hsl(194, 14%, 36%);
-
-    /* The display step of the typography scale: the size of a headline on a hero [S47, critic #19]. */
-    --kp-text-display: clamp(2rem, 4vw, 3rem);
-
-    /* Derived interaction states — see gates/generate-themes.mjs. */
-    --link: hsl(205, 70%, 38%);
-    --link-visited: hsl(269, 31%, 40%);
-    --focus-ring: hsl(194, 14%, 36%);
-    --focus-ring-contrast: hsl(44, 87%, 94%);
-    --primary-hover: hsl(203, 100%, 29%);
-    --primary-active: hsl(205, 100%, 25%);
-    --primary-disabled: hsl(206, 52%, 50%);
-    --secondary-hover: hsl(46, 25%, 80%);
-    --secondary-active: hsl(46, 18%, 73%);
-    --secondary-disabled: hsl(60, 100%, 96%);
-    --accent-hover: hsl(176, 100%, 25%);
-    --accent-active: hsl(176, 100%, 22%);
-    --accent-disabled: hsl(174, 42%, 48%);
-    --destructive-hover: hsl(357, 100%, 32%);
-    --destructive-active: hsl(3, 88%, 29%);
-    --destructive-disabled: hsl(3, 66%, 54%);
-}
-
-[data-theme='shade-dark'] {
-    /* Shade, the dark half: the same scheme with the lightness steps mirrored. Medium contrast, accents as plates. */
-    --background: hsl(192, 100%, 11%);
-    --foreground: hsl(186, 8%, 64%);
-    --card: hsl(192, 81%, 14%);
-    --card-foreground: hsl(186, 8%, 64%);
-    --popover: hsl(192, 60%, 17%);
-    --popover-foreground: hsl(186, 8%, 64%);
-    --primary: hsl(205, 72%, 60%);
-    --primary-foreground: hsl(192, 100%, 11%);
-    --secondary: hsl(192, 60%, 18%);
-    --secondary-foreground: hsl(180, 10%, 80%);
-    --muted: hsl(192, 70%, 15%);
-    --muted-foreground: hsl(186, 8%, 62%);
-    --accent: hsl(175, 59%, 40%);
-    --accent-foreground: hsl(192, 100%, 11%);
-    --destructive: hsl(1, 85%, 66%);
-    --destructive-foreground: hsl(1, 60%, 10%);
-    --success: hsl(68, 80%, 34%);
-    --success-foreground: hsl(68, 60%, 8%);
-    --warning: hsl(45, 100%, 34%);
-    --warning-foreground: hsl(45, 80%, 8%);
-    --info: hsl(205, 70%, 28%);
-    --info-foreground: hsl(205, 60%, 92%);
-    --border: hsl(192, 50%, 20%);
-    --border-strong: hsl(194, 14%, 50%);
-    --input: hsl(194, 14%, 50%);
-    --ring: hsl(205, 75%, 68%);
-    --selected: hsl(205, 69%, 50%);
-    --chart-1: hsl(205, 72%, 60%);
-    --chart-2: hsl(45, 100%, 45%);
-    --chart-3: hsl(331, 64%, 58%);
-    --chart-4: hsl(175, 59%, 40%);
-    --chart-5: hsl(237, 43%, 65%);
-    /* Code: the keyword and the string of a code block, from the chart hues, dark or light enough to be read rather than only seen [fix-58]. */
-    --code-keyword: hsl(205, 72%, 60%);
-    --code-string: hsl(45, 100%, 45%);
-    --sidebar-background: hsl(192, 100%, 9%);
-    --sidebar-foreground: hsl(186, 8%, 60%);
-    --sidebar-primary: hsl(205, 72%, 60%);
-    --sidebar-primary-foreground: hsl(192, 100%, 11%);
-    --sidebar-accent: hsl(192, 81%, 14%);
-    --sidebar-accent-foreground: hsl(180, 7%, 68%);
-    --sidebar-border: hsl(192, 50%, 18%);
-    --sidebar-ring: hsl(205, 72%, 60%);
-
-    /* Status badges (application pipeline): the accents as plates with light ink. */
-    --status-draft: hsl(194, 14%, 30%);
-    --status-draft-foreground: hsl(186, 10%, 88%);
-    --status-sent: hsl(205, 70%, 30%);
-    --status-sent-foreground: hsl(205, 60%, 92%);
-    --status-screening: hsl(45, 100%, 24%);
-    --status-screening-foreground: hsl(45, 80%, 92%);
-    --status-interview: hsl(237, 43%, 40%);
-    --status-interview-foreground: hsl(237, 50%, 93%);
-    --status-offer: hsl(68, 80%, 22%);
-    --status-offer-foreground: hsl(60, 60%, 90%);
-    --status-rejected: hsl(1, 71%, 34%);
-    --status-rejected-foreground: hsl(0, 60%, 93%);
-    --status-withdrawn: hsl(180, 7%, 26%);
-    --status-withdrawn-foreground: hsl(180, 7%, 80%);
-    --color-scheme: dark;
-    --theme-font-body: 'KP Shade Sans', 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
-    --radius: 0.25rem;
-    --fx-signal: hsl(331, 64%, 58%);
-    --fx-signal-foreground: hsl(331, 60%, 10%);
-    --fx-notch: 0px;
-    --fx-duration: 180ms;
-    --fx-ease: cubic-bezier(0.2, 0, 0, 1);
-    --theme-font-display: 'Source Serif 4', ui-serif, Georgia, serif;
-    --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-    --fx-overprint: hsl(175, 59%, 40%);
-    --fx-scanline: hsl(194, 14%, 50%);
-    --fx-lift: 0px;
-    --fx-hot: hsl(186, 8%, 80%);
-    --fx-hot-alarm: hsl(1, 85%, 75%);
-    --fx-shadow-offset: 0px;
-    --chart-pattern-1: none;
-    --chart-pattern-2: none;
-    --chart-pattern-3: none;
-    --chart-pattern-4: none;
-    --chart-pattern-5: none;
-
-    /* The spacing scale [TH94, AR18]. xs, sm and md carry the values they already had as fallbacks in css/components.css, so declaring them shifts nothing (S20); lg, xl and 2xl are the new steps above them. A theme may retune the whole rhythm here. */
-    --kp-space-xs: 0.25rem;
-    --kp-space-sm: 0.5rem;
-    --kp-space-md: 0.75rem;
-    --kp-space-lg: 1rem;
-    --kp-space-xl: 1.5rem;
-    --kp-space-2xl: 2rem;
-    --kp-text-xs: 0.75rem;
-    --kp-text-sm: 0.8125rem;
-    --kp-text-md: 1rem;
-
-    /* The hero surface: the sources AR38 names, so a theme can give the opening surface its own ground [TH116, S47]. A one-ground theme points them at its app values. */
-    --surface-hero-bg: hsl(192, 100%, 11%);
-    --surface-hero-fg: hsl(186, 8%, 64%);
-    --surface-hero-fg-2: hsl(205, 72%, 60%);
-    --surface-hero-muted: hsl(186, 8%, 62%);
-    --surface-hero-border: hsl(194, 14%, 50%);
-    --surface-hero-primary: hsl(205, 72%, 60%);
-    --surface-hero-primary-foreground: hsl(192, 100%, 11%);
-    --surface-hero-danger: hsl(1, 85%, 66%);
-    --surface-hero-danger-foreground: hsl(1, 60%, 10%);
-    --surface-hero-card: hsl(192, 81%, 14%);
-    --surface-hero-card-foreground: hsl(186, 8%, 64%);
-
-    /* The display step of the typography scale: the size of a headline on a hero [S47, critic #19]. */
-    --kp-text-display: clamp(2rem, 4vw, 3rem);
-
-    /* Derived interaction states — see gates/generate-themes.mjs. */
-    --link: hsl(205, 72%, 60%);
-    --link-visited: hsl(264, 64%, 77%);
-    --focus-ring: hsl(186, 8%, 64%);
-    --focus-ring-contrast: hsl(192, 100%, 11%);
-    --primary-hover: hsl(205, 90%, 68%);
-    --primary-active: hsl(202, 100%, 73%);
-    --primary-disabled: hsl(204, 60%, 48%);
-    --secondary-hover: hsl(193, 43%, 25%);
-    --secondary-active: hsl(193, 34%, 31%);
-    --secondary-disabled: hsl(193, 100%, 10%);
-    --accent-hover: hsl(175, 46%, 49%);
-    --accent-active: hsl(174, 51%, 57%);
-    --accent-disabled: hsl(176, 100%, 26%);
-    --destructive-hover: hsl(2, 100%, 72%);
-    --destructive-active: hsl(4, 77%, 75%);
-    --destructive-disabled: hsl(359, 61%, 54%);
-}
-
-[data-theme='retro'] {
-    /* Retro: the Windows 95 desktop — grey chrome, a navy title bar, bevels around a gated boundary. Nothing blinks. */
-    --background: hsl(0, 0%, 75%);
-    --foreground: hsl(0, 0%, 10%);
-    --card: hsl(0, 0%, 84%);
-    --card-foreground: hsl(0, 0%, 10%);
-    --popover: hsl(0, 0%, 90%);
-    --popover-foreground: hsl(0, 0%, 10%);
-    --primary: hsl(240, 100%, 25%);
-    --primary-foreground: hsl(0, 0%, 100%);
-    --secondary: hsl(0, 0%, 87%);
-    --secondary-foreground: hsl(0, 0%, 10%);
-    --muted: hsl(0, 0%, 80%);
-    --muted-foreground: hsl(0, 0%, 25%);
-    --accent: hsl(180, 100%, 20%);
-    --accent-foreground: hsl(0, 0%, 100%);
-    --destructive: hsl(0, 100%, 25%);
-    --destructive-foreground: hsl(0, 0%, 100%);
-    --success: hsl(120, 100%, 20%);
-    --success-foreground: hsl(0, 0%, 100%);
-    --warning: hsl(50, 100%, 50%);
-    --warning-foreground: hsl(0, 0%, 10%);
-    --info: hsl(210, 100%, 30%);
-    --info-foreground: hsl(0, 0%, 100%);
-    --border: hsl(0, 0%, 50%);
-    --border-strong: hsl(0, 0%, 38%);
-    --input: hsl(0, 0%, 38%);
-    --ring: hsl(240, 100%, 25%);
-    --selected: hsl(240, 100%, 25%);
-    --chart-1: hsl(240, 100%, 25%);
-    --chart-2: hsl(180, 100%, 20%);
-    --chart-3: hsl(0, 100%, 25%);
-    --chart-4: hsl(300, 100%, 25%);
-    --chart-5: hsl(120, 100%, 20%);
-    /* Code: the keyword and the string of a code block, from the chart hues, dark or light enough to be read rather than only seen [fix-58]. */
-    --code-keyword: hsl(240, 100%, 25%);
-    --code-string: hsl(180, 100%, 20%);
-    --sidebar-background: hsl(240, 100%, 25%);
-    --sidebar-foreground: hsl(0, 0%, 100%);
-    --sidebar-primary: hsl(0, 0%, 100%);
-    --sidebar-primary-foreground: hsl(240, 100%, 25%);
-    --sidebar-accent: hsl(208, 86%, 36%);
-    --sidebar-accent-foreground: hsl(0, 0%, 100%);
-    --sidebar-border: hsl(240, 60%, 45%);
-    --sidebar-ring: hsl(0, 0%, 100%);
-
-    /* Status badges (application pipeline): the sixteen-colour palette as plates. */
-    --status-draft: hsl(0, 0%, 95%);
-    --status-draft-foreground: hsl(0, 0%, 10%);
-    --status-sent: hsl(240, 100%, 25%);
-    --status-sent-foreground: hsl(0, 0%, 100%);
-    --status-screening: hsl(50, 100%, 50%);
-    --status-screening-foreground: hsl(0, 0%, 10%);
-    --status-interview: hsl(300, 100%, 25%);
-    --status-interview-foreground: hsl(0, 0%, 100%);
-    --status-offer: hsl(120, 100%, 26%);
-    --status-offer-foreground: hsl(0, 0%, 100%);
-    --status-rejected: hsl(0, 100%, 24%);
-    --status-rejected-foreground: hsl(0, 0%, 100%);
-    --status-withdrawn: hsl(0, 0%, 55%);
-    --status-withdrawn-foreground: hsl(0, 0%, 10%);
-    --color-scheme: light;
-    --theme-font-body: 'Instrument Sans', 'Segoe UI', Tahoma, ui-sans-serif, system-ui, sans-serif;
-    --radius: 0rem;
-    --fx-signal: hsl(180, 100%, 20%);
-    --fx-signal-foreground: hsl(0, 0%, 100%);
-    --fx-notch: 0px;
-    --fx-duration: 0ms;
-    --fx-ease: linear;
-    --theme-font-display: 'Pixelify Sans', 'Silkscreen', 'Courier New', ui-monospace, monospace;
-    --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-    --fx-overprint: hsl(240, 100%, 25%);
-    --fx-scanline: hsl(0, 0%, 10%);
-    --fx-lift: 0px;
-    --fx-hot: hsl(0, 0%, 25%);
-    --fx-hot-alarm: hsl(0, 100%, 30%);
-    --fx-shadow-offset: 0px;
-    --chart-pattern-1: none;
-    --chart-pattern-2: none;
-    --chart-pattern-3: none;
-    --chart-pattern-4: none;
-    --chart-pattern-5: none;
-
-    /* The spacing scale [TH94, AR18]. xs, sm and md carry the values they already had as fallbacks in css/components.css, so declaring them shifts nothing (S20); lg, xl and 2xl are the new steps above them. A theme may retune the whole rhythm here. */
-    --kp-space-xs: 0.25rem;
-    --kp-space-sm: 0.5rem;
-    --kp-space-md: 0.75rem;
-    --kp-space-lg: 1rem;
-    --kp-space-xl: 1.5rem;
-    --kp-space-2xl: 2rem;
-    --kp-text-xs: 0.75rem;
-    --kp-text-sm: 0.8125rem;
-    --kp-text-md: 1rem;
-
-    /* The hero surface: the sources AR38 names, so a theme can give the opening surface its own ground [TH116, S47]. A one-ground theme points them at its app values. */
-    --surface-hero-bg: hsl(0, 0%, 75%);
-    --surface-hero-fg: hsl(0, 0%, 10%);
-    --surface-hero-fg-2: hsl(240, 100%, 25%);
-    --surface-hero-muted: hsl(0, 0%, 25%);
-    --surface-hero-border: hsl(0, 0%, 38%);
-    --surface-hero-primary: hsl(240, 100%, 25%);
-    --surface-hero-primary-foreground: hsl(0, 0%, 100%);
-    --surface-hero-danger: hsl(0, 100%, 25%);
-    --surface-hero-danger-foreground: hsl(0, 0%, 100%);
-    --surface-hero-card: hsl(0, 0%, 84%);
-    --surface-hero-card-foreground: hsl(0, 0%, 10%);
-
-    /* The display step of the typography scale: the size of a headline on a hero [S47, critic #19]. */
-    --kp-text-display: clamp(2rem, 4vw, 3rem);
-
-    /* Derived interaction states — see gates/generate-themes.mjs. */
-    --link: hsl(240, 100%, 25%);
-    --link-visited: hsl(278, 100%, 19%);
-    --focus-ring: hsl(0, 0%, 10%);
-    --focus-ring-contrast: hsl(0, 0%, 75%);
-    --primary-hover: hsl(243, 100%, 21%);
-    --primary-active: hsl(236, 71%, 16%);
-    --primary-disabled: hsl(225, 94%, 32%);
-    --secondary-hover: hsl(44, 0%, 79%);
-    --secondary-active: hsl(44, 0%, 72%);
-    --secondary-disabled: hsl(44, 0%, 99%);
-    --accent-hover: hsl(180, 100%, 17%);
-    --accent-active: hsl(180, 100%, 14%);
-    --accent-disabled: hsl(180, 48%, 34%);
-    --destructive-hover: hsl(0, 100%, 21%);
-    --destructive-active: hsl(2, 90%, 17%);
-    --destructive-disabled: hsl(5, 67%, 37%);
 }
 
 [data-theme='grotesk'] {
@@ -2426,7 +1785,7 @@
     --fx-signal-foreground: hsl(0, 0%, 100%);
     --fx-notch: 0px;
     --fx-duration: 120ms;
-    --fx-ease: cubic-bezier(0.2, 0, 0, 1);
+    --fx-ease: linear;
     --theme-font-display: 'Archivo', 'Inter', ui-sans-serif, sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(355, 95%, 45%);
@@ -2485,135 +1844,6 @@
     --destructive-hover: hsl(0, 100%, 35%);
     --destructive-active: hsl(4, 78%, 33%);
     --destructive-disabled: hsl(1, 79%, 56%);
-}
-
-[data-theme='lapis'] {
-    /* Lapis: Persian illumination — lapis ground, ivory text, gold ruling, vermilion accents, a girih star under the glass. */
-    --background: hsl(228, 60%, 26%);
-    --foreground: hsl(42, 55%, 89%);
-    --card: hsl(228, 57%, 31%);
-    --card-foreground: hsl(42, 55%, 89%);
-    --popover: hsl(228, 54%, 36%);
-    --popover-foreground: hsl(42, 55%, 89%);
-    --primary: hsl(43, 67%, 50%);
-    --primary-foreground: hsl(228, 60%, 12%);
-    --secondary: hsl(228, 50%, 34%);
-    --secondary-foreground: hsl(42, 55%, 89%);
-    --muted: hsl(228, 45%, 32%);
-    --muted-foreground: hsl(230, 30%, 74%);
-    --accent: hsl(5, 75%, 55%);
-    --accent-foreground: hsl(5, 60%, 8%);
-    --destructive: hsl(5, 90%, 70%);
-    --destructive-foreground: hsl(5, 60%, 8%);
-    --success: hsl(170, 40%, 30%);
-    --success-foreground: hsl(42, 55%, 89%);
-    --warning: hsl(40, 60%, 30%);
-    --warning-foreground: hsl(42, 55%, 89%);
-    --info: hsl(205, 60%, 32%);
-    --info-foreground: hsl(42, 55%, 89%);
-    --border: hsl(228, 45%, 36%);
-    --border-strong: hsl(43, 45%, 52%);
-    --input: hsl(43, 45%, 52%);
-    --ring: hsl(43, 67%, 50%);
-    --selected: hsl(43, 67%, 46%);
-    --chart-1: hsl(43, 67%, 50%);
-    --chart-2: hsl(5, 80%, 62%);
-    --chart-3: hsl(170, 50%, 50%);
-    --chart-4: hsl(42, 55%, 80%);
-    --chart-5: hsl(330, 50%, 65%);
-    /* Code: the keyword and the string of a code block, from the chart hues, dark or light enough to be read rather than only seen [fix-58]. */
-    --code-keyword: hsl(43, 67%, 50%);
-    --code-string: hsl(5, 80%, 72%);
-    --sidebar-background: hsl(228, 65%, 18%);
-    --sidebar-foreground: hsl(42, 55%, 89%);
-    --sidebar-primary: hsl(43, 67%, 50%);
-    --sidebar-primary-foreground: hsl(228, 60%, 12%);
-    --sidebar-accent: hsl(228, 55%, 28%);
-    --sidebar-accent-foreground: hsl(42, 55%, 89%);
-    --sidebar-border: hsl(228, 45%, 30%);
-    --sidebar-ring: hsl(43, 67%, 50%);
-
-    /* Status badges (application pipeline): deep plates with ivory ink. */
-    --status-draft: hsl(228, 30%, 40%);
-    --status-draft-foreground: hsl(42, 55%, 89%);
-    --status-sent: hsl(205, 60%, 32%);
-    --status-sent-foreground: hsl(42, 55%, 89%);
-    --status-screening: hsl(40, 60%, 30%);
-    --status-screening-foreground: hsl(42, 55%, 89%);
-    --status-interview: hsl(285, 40%, 40%);
-    --status-interview-foreground: hsl(42, 55%, 89%);
-    --status-offer: hsl(175, 70%, 24%);
-    --status-offer-foreground: hsl(42, 55%, 89%);
-    --status-rejected: hsl(0, 80%, 30%);
-    --status-rejected-foreground: hsl(42, 55%, 89%);
-    --status-withdrawn: hsl(228, 20%, 42%);
-    --status-withdrawn-foreground: hsl(42, 55%, 89%);
-    --color-scheme: dark;
-    --theme-font-body: 'Vazirmatn', ui-sans-serif, system-ui, sans-serif;
-    --radius: 0.5rem;
-    --fx-signal: hsl(43, 67%, 50%);
-    --fx-signal-foreground: hsl(228, 60%, 12%);
-    --fx-notch: 0px;
-    --fx-duration: 220ms;
-    --fx-ease: cubic-bezier(0.4, 0, 0.2, 1);
-    --theme-font-display: 'Markazi Text', ui-serif, Georgia, serif;
-    --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-    --fx-overprint: hsl(5, 75%, 55%);
-    --fx-scanline: hsl(43, 67%, 50%);
-    --fx-lift: 1px;
-    --fx-hot: hsl(42, 55%, 80%);
-    --fx-hot-alarm: hsl(5, 90%, 75%);
-    --fx-shadow-offset: 0px;
-    --chart-pattern-1: none;
-    --chart-pattern-2: none;
-    --chart-pattern-3: none;
-    --chart-pattern-4: none;
-    --chart-pattern-5: none;
-
-    /* The spacing scale [TH94, AR18]. xs, sm and md carry the values they already had as fallbacks in css/components.css, so declaring them shifts nothing (S20); lg, xl and 2xl are the new steps above them. A theme may retune the whole rhythm here. */
-    --kp-space-xs: 0.25rem;
-    --kp-space-sm: 0.5rem;
-    --kp-space-md: 0.75rem;
-    --kp-space-lg: 1rem;
-    --kp-space-xl: 1.5rem;
-    --kp-space-2xl: 2rem;
-    --kp-text-xs: 0.75rem;
-    --kp-text-sm: 0.8125rem;
-    --kp-text-md: 1rem;
-
-    /* The hero surface: the sources AR38 names, so a theme can give the opening surface its own ground [TH116, S47]. A one-ground theme points them at its app values. */
-    --surface-hero-bg: hsl(228, 60%, 26%);
-    --surface-hero-fg: hsl(42, 55%, 89%);
-    --surface-hero-fg-2: hsl(43, 67%, 50%);
-    --surface-hero-muted: hsl(230, 30%, 74%);
-    --surface-hero-border: hsl(43, 45%, 52%);
-    --surface-hero-primary: hsl(43, 67%, 50%);
-    --surface-hero-primary-foreground: hsl(228, 60%, 12%);
-    --surface-hero-danger: hsl(5, 90%, 70%);
-    --surface-hero-danger-foreground: hsl(5, 60%, 8%);
-    --surface-hero-card: hsl(228, 57%, 31%);
-    --surface-hero-card-foreground: hsl(42, 55%, 89%);
-
-    /* The display step of the typography scale: the size of a headline on a hero [S47, critic #19]. */
-    --kp-text-display: clamp(2rem, 4vw, 3rem);
-
-    /* Derived interaction states — see gates/generate-themes.mjs. */
-    --link: hsl(43, 67%, 50%);
-    --link-visited: hsl(123, 38%, 61%);
-    --focus-ring: hsl(42, 55%, 89%);
-    --focus-ring-contrast: hsl(228, 60%, 26%);
-    --primary-hover: hsl(42, 79%, 59%);
-    --primary-active: hsl(42, 97%, 67%);
-    --primary-disabled: hsl(45, 100%, 36%);
-    --secondary-hover: hsl(227, 44%, 41%);
-    --secondary-active: hsl(226, 39%, 47%);
-    --secondary-disabled: hsl(231, 63%, 25%);
-    --accent-hover: hsl(6, 93%, 63%);
-    --accent-active: hsl(7, 100%, 68%);
-    --accent-disabled: hsl(3, 79%, 43%);
-    --destructive-hover: hsl(6, 100%, 75%);
-    --destructive-active: hsl(7, 72%, 78%);
-    --destructive-disabled: hsl(4, 63%, 59%);
 }
 
 [data-theme='nostromo'] {
@@ -2684,12 +1914,12 @@
     --fx-signal-foreground: hsl(38, 30%, 90%);
     --fx-notch: 0px;
     --fx-duration: 160ms;
-    --fx-ease: cubic-bezier(0.2, 0, 0, 1);
+    --fx-ease: linear(0 0%, 0 50%, 0.878 50%, 0.878 99.99%, 1 100%);
     --theme-font-display: 'Michroma', ui-sans-serif, system-ui, sans-serif;
     --theme-font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(17, 74%, 38%);
     --fx-scanline: hsl(24, 12%, 15%);
-    --fx-lift: 1px;
+    --fx-lift: 0px;
     --fx-hot: hsl(24, 12%, 25%);
     --fx-hot-alarm: hsl(10, 80%, 30%);
     --fx-shadow-offset: 0px;
@@ -2827,7 +2057,7 @@
     --fx-signal-foreground: hsl(216, 22%, 11%);
     --fx-notch: 0.6rem;
     --fx-duration: 60ms;
-    --fx-ease: cubic-bezier(0.3, 0.9, 0.3, 1);
+    --fx-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
     --theme-font-display: 'Sora', 'Be Vietnam Pro', ui-sans-serif, system-ui, sans-serif;
     --theme-font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
     --fx-overprint: hsl(214, 10%, 24%);
@@ -3101,52 +2331,6 @@
         --destructive-active: hsl(5, 100%, 25%);
         --destructive-disabled: hsl(9, 52%, 51%);
     }
-    [data-theme='high-contrast'] [data-kp-surface='hero'] {
-        --background: var(--surface-hero-bg);
-        --foreground: var(--surface-hero-fg);
-        --muted-foreground: var(--surface-hero-muted);
-        --border-strong: var(--surface-hero-border);
-        --input: var(--surface-hero-border);
-        --selected: var(--surface-hero-primary);
-        --primary: var(--surface-hero-primary);
-        --primary-foreground: var(--surface-hero-primary-foreground);
-        --destructive: var(--surface-hero-danger);
-        --destructive-foreground: var(--surface-hero-danger-foreground);
-        --card: var(--surface-hero-card);
-        --card-foreground: var(--surface-hero-card-foreground);
-        --link: var(--surface-hero-fg-2);
-        --focus-ring: var(--surface-hero-fg);
-        --focus-ring-contrast: var(--surface-hero-bg);
-        --primary-hover: hsl(226, 100%, 26%);
-        --primary-active: hsl(238, 100%, 22%);
-        --primary-disabled: hsl(220, 74%, 41%);
-        --destructive-hover: hsl(0, 100%, 28%);
-        --destructive-active: hsl(4, 78%, 25%);
-        --destructive-disabled: hsl(4, 68%, 45%);
-    }
-    [data-theme='sepia'] [data-kp-surface='hero'] {
-        --background: var(--surface-hero-bg);
-        --foreground: var(--surface-hero-fg);
-        --muted-foreground: var(--surface-hero-muted);
-        --border-strong: var(--surface-hero-border);
-        --input: var(--surface-hero-border);
-        --selected: var(--surface-hero-primary);
-        --primary: var(--surface-hero-primary);
-        --primary-foreground: var(--surface-hero-primary-foreground);
-        --destructive: var(--surface-hero-danger);
-        --destructive-foreground: var(--surface-hero-danger-foreground);
-        --card: var(--surface-hero-card);
-        --card-foreground: var(--surface-hero-card-foreground);
-        --link: var(--surface-hero-fg-2);
-        --focus-ring: var(--surface-hero-fg);
-        --focus-ring-contrast: var(--surface-hero-bg);
-        --primary-hover: hsl(25, 71%, 25%);
-        --primary-active: hsl(26, 100%, 18%);
-        --primary-disabled: hsl(23, 42%, 43%);
-        --destructive-hover: hsl(5, 73%, 31%);
-        --destructive-active: hsl(1, 99%, 23%);
-        --destructive-disabled: hsl(7, 48%, 49%);
-    }
     [data-theme='blueprint'] [data-kp-surface='hero'] {
         --background: var(--surface-hero-bg);
         --foreground: var(--surface-hero-fg);
@@ -3262,75 +2446,6 @@
         --destructive-active: hsl(1, 74%, 68%);
         --destructive-disabled: hsl(352, 100%, 43%);
     }
-    [data-theme='shade-light'] [data-kp-surface='hero'] {
-        --background: var(--surface-hero-bg);
-        --foreground: var(--surface-hero-fg);
-        --muted-foreground: var(--surface-hero-muted);
-        --border-strong: var(--surface-hero-border);
-        --input: var(--surface-hero-border);
-        --selected: var(--surface-hero-primary);
-        --primary: var(--surface-hero-primary);
-        --primary-foreground: var(--surface-hero-primary-foreground);
-        --destructive: var(--surface-hero-danger);
-        --destructive-foreground: var(--surface-hero-danger-foreground);
-        --card: var(--surface-hero-card);
-        --card-foreground: var(--surface-hero-card-foreground);
-        --link: var(--surface-hero-fg-2);
-        --focus-ring: var(--surface-hero-fg);
-        --focus-ring-contrast: var(--surface-hero-bg);
-        --primary-hover: hsl(203, 100%, 29%);
-        --primary-active: hsl(205, 100%, 25%);
-        --primary-disabled: hsl(206, 52%, 50%);
-        --destructive-hover: hsl(357, 100%, 32%);
-        --destructive-active: hsl(3, 88%, 29%);
-        --destructive-disabled: hsl(3, 66%, 54%);
-    }
-    [data-theme='shade-dark'] [data-kp-surface='hero'] {
-        --background: var(--surface-hero-bg);
-        --foreground: var(--surface-hero-fg);
-        --muted-foreground: var(--surface-hero-muted);
-        --border-strong: var(--surface-hero-border);
-        --input: var(--surface-hero-border);
-        --selected: var(--surface-hero-primary);
-        --primary: var(--surface-hero-primary);
-        --primary-foreground: var(--surface-hero-primary-foreground);
-        --destructive: var(--surface-hero-danger);
-        --destructive-foreground: var(--surface-hero-danger-foreground);
-        --card: var(--surface-hero-card);
-        --card-foreground: var(--surface-hero-card-foreground);
-        --link: var(--surface-hero-fg-2);
-        --focus-ring: var(--surface-hero-fg);
-        --focus-ring-contrast: var(--surface-hero-bg);
-        --primary-hover: hsl(205, 90%, 68%);
-        --primary-active: hsl(202, 100%, 73%);
-        --primary-disabled: hsl(204, 60%, 48%);
-        --destructive-hover: hsl(2, 100%, 72%);
-        --destructive-active: hsl(4, 77%, 75%);
-        --destructive-disabled: hsl(359, 61%, 54%);
-    }
-    [data-theme='retro'] [data-kp-surface='hero'] {
-        --background: var(--surface-hero-bg);
-        --foreground: var(--surface-hero-fg);
-        --muted-foreground: var(--surface-hero-muted);
-        --border-strong: var(--surface-hero-border);
-        --input: var(--surface-hero-border);
-        --selected: var(--surface-hero-primary);
-        --primary: var(--surface-hero-primary);
-        --primary-foreground: var(--surface-hero-primary-foreground);
-        --destructive: var(--surface-hero-danger);
-        --destructive-foreground: var(--surface-hero-danger-foreground);
-        --card: var(--surface-hero-card);
-        --card-foreground: var(--surface-hero-card-foreground);
-        --link: var(--surface-hero-fg-2);
-        --focus-ring: var(--surface-hero-fg);
-        --focus-ring-contrast: var(--surface-hero-bg);
-        --primary-hover: hsl(243, 100%, 21%);
-        --primary-active: hsl(236, 71%, 16%);
-        --primary-disabled: hsl(225, 94%, 32%);
-        --destructive-hover: hsl(0, 100%, 21%);
-        --destructive-active: hsl(2, 90%, 17%);
-        --destructive-disabled: hsl(5, 67%, 37%);
-    }
     [data-theme='grotesk'] [data-kp-surface='hero'] {
         --background: var(--surface-hero-bg);
         --foreground: var(--surface-hero-fg);
@@ -3353,29 +2468,6 @@
         --destructive-hover: hsl(0, 100%, 35%);
         --destructive-active: hsl(4, 78%, 33%);
         --destructive-disabled: hsl(1, 79%, 56%);
-    }
-    [data-theme='lapis'] [data-kp-surface='hero'] {
-        --background: var(--surface-hero-bg);
-        --foreground: var(--surface-hero-fg);
-        --muted-foreground: var(--surface-hero-muted);
-        --border-strong: var(--surface-hero-border);
-        --input: var(--surface-hero-border);
-        --selected: var(--surface-hero-primary);
-        --primary: var(--surface-hero-primary);
-        --primary-foreground: var(--surface-hero-primary-foreground);
-        --destructive: var(--surface-hero-danger);
-        --destructive-foreground: var(--surface-hero-danger-foreground);
-        --card: var(--surface-hero-card);
-        --card-foreground: var(--surface-hero-card-foreground);
-        --link: var(--surface-hero-fg-2);
-        --focus-ring: var(--surface-hero-fg);
-        --focus-ring-contrast: var(--surface-hero-bg);
-        --primary-hover: hsl(42, 79%, 59%);
-        --primary-active: hsl(42, 97%, 67%);
-        --primary-disabled: hsl(45, 100%, 36%);
-        --destructive-hover: hsl(6, 100%, 75%);
-        --destructive-active: hsl(7, 72%, 78%);
-        --destructive-disabled: hsl(4, 63%, 59%);
     }
     [data-theme='nostromo'] [data-kp-surface='hero'] {
         --background: var(--surface-hero-bg);
@@ -3454,16 +2546,10 @@
         --fx-texture-opacity: 0.035;
     }
 
-    /* T6 · Light = "Blauwdruk": millimetre grid off a drawing table. */
-    [data-theme='light'] {
-        --fx-texture:
-            linear-gradient(to right, hsl(from var(--primary) h s l / 0.55) 1px, transparent 1px),
-            linear-gradient(to bottom, hsl(from var(--primary) h s l / 0.55) 1px, transparent 1px),
-            linear-gradient(to right, hsl(from var(--primary) h s l / 0.9) 1px, transparent 1px),
-            linear-gradient(to bottom, hsl(from var(--primary) h s l / 0.9) 1px, transparent 1px);
-        --fx-texture-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
-        --fx-texture-opacity: 0.05;
-    }
+    /* T6 · Light carries no texture. It was "Blauwdruk", a millimetre grid off
+       a drawing table at 5 %, which the light register switched off again
+       (white on white, told apart by shadows and the seam, Kenny, 2026-10-08).
+       The block is gone from here; nothing was visible of it. */
 
     /* T7 · Dark carries no texture. It was "Observatorium", a faint
        starfield behind the glass, from round one until 2026-09-11, when
@@ -3603,22 +2689,6 @@
         --kp-control-accent: var(--muted-foreground);
     }
 
-    /* Retro: a two-pixel checkerboard, the dither every gradient was [TH71]. */
-    [data-theme='retro'] {
-        --fx-texture: repeating-conic-gradient(hsl(from var(--foreground) h s l / 1) 0 25%, transparent 0 50%);
-        --fx-texture-size: 4px 4px;
-        --fx-texture-opacity: 0.04;
-    }
-
-    /* The title bar: the navy-to-blue gradient of a 1995 window, behind h1.
- * Static; the theme has no motion. */
-    [data-theme='retro'] h1 {
-        display: inline-block;
-        padding: 0.15em 0.6em;
-        background: linear-gradient(90deg, var(--primary), var(--info));
-        color: var(--primary-foreground);
-    }
-
     /* Grotesk: twelve columns, the grid every Swiss poster was set on [TH73].
  * Columns, not squares — that is what separates it from light's
  * millimetre grid. */
@@ -3643,20 +2713,6 @@
         block-size: 0.5em;
         margin-inline-end: 0.3em;
         background: var(--primary);
-    }
-
-    /* Lapis: an eight-fold girih star, tiled, in the ruling gold [TH74]. */
-    [data-theme='lapis'] {
-        --fx-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23d4a72c' stroke-width='1'%3E%3Cpath d='M32 4l6.5 21.5L60 32l-21.5 6.5L32 60l-6.5-21.5L4 32l21.5-6.5z'/%3E%3Cpath d='M12.2 12.2l19.8 8.2 19.8-8.2-8.2 19.8 8.2 19.8-19.8-8.2-19.8 8.2 8.2-19.8z'/%3E%3C/g%3E%3C/svg%3E");
-        --fx-texture-size: 64px 64px;
-        --fx-texture-opacity: 0.05;
-    }
-
-    /* The ruling: a gold hairline inset from the card's edge, the frame an
- * illuminated page was drawn inside. Static. */
-    [data-theme='lapis'] .kp-card {
-        outline: 1px solid var(--primary);
-        outline-offset: -5px;
     }
 
     /* Nostromo: vent slots, the horizontal ribs of a moulded case [TH75]. */
@@ -3686,9 +2742,29 @@
 
     /* T9 · Forest: contour lines wandering across the kraft paper. */
     [data-theme='forest'] {
-        --fx-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='360'%3E%3Cg fill='none' stroke='%23335544' stroke-width='1'%3E%3Cpath d='M-20 60 Q 60 20 140 65 T 300 55 T 400 80'/%3E%3Cpath d='M-20 95 Q 70 55 150 100 T 305 90 T 400 115'/%3E%3Cpath d='M-20 130 Q 80 95 160 135 T 310 125 T 400 150'/%3E%3Cpath d='M-20 230 Q 50 195 130 235 T 290 225 T 400 250'/%3E%3Cpath d='M-20 265 Q 60 235 140 270 T 295 260 T 400 285'/%3E%3Cpath d='M-20 330 Q 70 300 150 335 T 305 325 T 400 350'/%3E%3C/g%3E%3C/svg%3E");
-        --fx-texture-size: 360px 360px;
-        --fx-texture-opacity: 0.06;
+        /* One seamless contour field, 900 x 900 px, periodic on both axes: every line that
+           leaves an edge re-enters the opposite edge at the same place, so the repeat has no
+           seam and no ring is cut off [2026-10-07, Kenny]. Generated from a sum-of-sines
+           height field (marching squares). The ink carries its own 5 % alpha, because the
+           field is the page's own background, not a layer above it. */
+        --fx-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900' viewBox='0 0 900 900'%3E%3Cg fill='none' stroke='%23235744' stroke-width='1.1' stroke-opacity='.05'%3E%3Cpath d='M-6 740Q0 741 6 743Q12 746 16 749Q20 752 28 764Q36 776 42 794Q48 812 50 820Q51 828 51 836Q51 844 48 852Q45 860 38 865Q32 870 20 873Q8 877 -8 877Q-24 878 -36 874Q-48 871 -56 864Q-64 857 -68 846Q-72 836 -72 822Q-72 808 -67 794Q-62 780 -53 768Q-44 756 -34 749Q-24 743 -18 741Q-12 740 -6 740Z'/%3E%3Cpath d='M894 740Q900 741 906 743Q912 746 916 749Q920 752 928 764Q936 776 942 794Q948 812 950 820Q951 828 951 836Q951 844 948 852Q945 860 938 865Q932 870 920 873Q908 877 892 877Q876 878 864 874Q852 871 844 864Q836 857 832 846Q828 836 828 822Q828 808 833 794Q838 780 847 768Q856 756 866 749Q876 743 882 741Q888 740 894 740Z'/%3E%3Cpath d='M-15 49Q0 47 10 47Q20 48 28 49Q36 51 51 57Q67 64 86 78Q105 92 113 100Q121 108 125 114Q129 120 133 128Q136 136 137 144Q139 152 137 190Q135 228 136 246Q136 264 139 278Q143 292 147 300Q152 308 159 314Q166 320 193 334Q220 347 246 365Q272 382 278 385Q284 388 290 389Q296 391 302 390Q308 390 314 388Q320 385 326 380Q332 375 340 365Q348 356 383 302Q418 248 422 238Q426 228 426 220Q426 212 420 188Q415 164 411 130Q407 96 404 88Q400 80 395 74Q390 68 383 64Q376 61 366 60Q356 59 346 60Q336 61 308 68Q280 74 272 75Q264 75 256 73Q248 71 242 68Q236 64 231 58Q225 52 203 16Q181 -20 156 -50Q131 -80 124 -90Q117 -100 110 -114Q103 -128 94 -160Q86 -192 81 -202Q76 -212 72 -216Q68 -221 62 -225Q56 -229 50 -231Q44 -234 36 -235Q28 -237 20 -237Q12 -237 2 -235Q-8 -233 -18 -229Q-28 -225 -36 -221Q-44 -216 -58 -203Q-72 -191 -85 -171Q-99 -152 -109 -132Q-119 -112 -125 -92Q-132 -72 -134 -56Q-137 -40 -139 -8Q-142 24 -148 52Q-154 80 -154 90Q-154 100 -151 108Q-148 116 -142 122Q-136 128 -132 130Q-128 131 -124 131Q-120 131 -115 130Q-111 128 -105 124Q-100 119 -87 100Q-73 80 -65 72Q-56 64 -43 58Q-30 52 -15 49Z'/%3E%3Cpath d='M-15 949Q0 947 10 947Q20 948 28 949Q36 951 51 957Q67 964 86 978Q105 992 113 1000Q121 1008 125 1014Q129 1020 133 1028Q136 1036 137 1044Q139 1052 137 1090Q135 1128 136 1146Q136 1164 139 1178Q143 1192 147 1200Q152 1208 159 1214Q166 1220 193 1234Q220 1247 246 1265Q272 1282 278 1285Q284 1288 290 1289Q296 1291 302 1290Q308 1290 314 1288Q320 1285 326 1280Q332 1275 340 1265Q348 1256 383 1202Q418 1148 422 1138Q426 1128 426 1120Q426 1112 420 1088Q415 1064 411 1030Q407 996 404 988Q400 980 395 974Q390 968 383 964Q376 961 366 960Q356 959 346 960Q336 961 308 968Q280 974 272 975Q264 975 256 973Q248 971 242 968Q236 964 231 958Q225 952 203 916Q181 880 156 850Q131 820 124 810Q117 800 110 786Q103 772 94 740Q86 708 81 698Q76 688 72 684Q68 679 62 675Q56 671 50 669Q44 666 36 665Q28 663 20 663Q12 663 2 665Q-8 667 -18 671Q-28 675 -36 679Q-44 684 -58 697Q-72 709 -85 729Q-99 748 -109 768Q-119 788 -125 808Q-132 828 -134 844Q-137 860 -139 892Q-142 924 -148 952Q-154 980 -154 990Q-154 1000 -151 1008Q-148 1016 -142 1022Q-136 1028 -132 1030Q-128 1031 -124 1031Q-120 1031 -115 1030Q-111 1028 -105 1024Q-100 1019 -87 1000Q-73 980 -65 972Q-56 964 -43 958Q-30 952 -15 949Z'/%3E%3Cpath d='M885 49Q900 47 910 47Q920 48 928 49Q936 51 951 57Q967 64 986 78Q1005 92 1013 100Q1021 108 1025 114Q1029 120 1033 128Q1036 136 1037 144Q1039 152 1037 190Q1035 228 1036 246Q1036 264 1039 278Q1043 292 1047 300Q1052 308 1059 314Q1066 320 1093 334Q1120 347 1146 365Q1172 382 1178 385Q1184 388 1190 389Q1196 391 1202 390Q1208 390 1214 388Q1220 385 1226 380Q1232 375 1240 365Q1248 356 1283 302Q1318 248 1322 238Q1326 228 1326 220Q1326 212 1320 188Q1315 164 1311 130Q1307 96 1304 88Q1300 80 1295 74Q1290 68 1283 64Q1276 61 1266 60Q1256 59 1246 60Q1236 61 1208 68Q1180 74 1172 75Q1164 75 1156 73Q1148 71 1142 68Q1136 64 1131 58Q1125 52 1103 16Q1081 -20 1056 -50Q1031 -80 1024 -90Q1017 -100 1010 -114Q1003 -128 994 -160Q986 -192 981 -202Q976 -212 972 -216Q968 -221 962 -225Q956 -229 950 -231Q944 -234 936 -235Q928 -237 920 -237Q912 -237 902 -235Q892 -233 882 -229Q872 -225 864 -221Q856 -216 842 -203Q828 -191 815 -171Q801 -152 791 -132Q781 -112 775 -92Q768 -72 766 -56Q763 -40 761 -8Q758 24 752 52Q746 80 746 90Q746 100 749 108Q752 116 758 122Q764 128 768 130Q772 131 776 131Q780 131 785 130Q789 128 795 124Q800 119 813 100Q827 80 835 72Q844 64 857 58Q870 52 885 49Z'/%3E%3Cpath d='M885 949Q900 947 910 947Q920 948 928 949Q936 951 951 957Q967 964 986 978Q1005 992 1013 1000Q1021 1008 1025 1014Q1029 1020 1033 1028Q1036 1036 1037 1044Q1039 1052 1037 1090Q1035 1128 1036 1146Q1036 1164 1039 1178Q1043 1192 1047 1200Q1052 1208 1059 1214Q1066 1220 1093 1234Q1120 1247 1146 1265Q1172 1282 1178 1285Q1184 1288 1190 1289Q1196 1291 1202 1290Q1208 1290 1214 1288Q1220 1285 1226 1280Q1232 1275 1240 1265Q1248 1256 1283 1202Q1318 1148 1322 1138Q1326 1128 1326 1120Q1326 1112 1320 1088Q1315 1064 1311 1030Q1307 996 1304 988Q1300 980 1295 974Q1290 968 1283 964Q1276 961 1266 960Q1256 959 1246 960Q1236 961 1208 968Q1180 974 1172 975Q1164 975 1156 973Q1148 971 1142 968Q1136 964 1131 958Q1125 952 1103 916Q1081 880 1056 850Q1031 820 1024 810Q1017 800 1010 786Q1003 772 994 740Q986 708 981 698Q976 688 972 684Q968 679 962 675Q956 671 950 669Q944 666 936 665Q928 663 920 663Q912 663 902 665Q892 667 882 671Q872 675 864 679Q856 684 842 697Q828 709 815 729Q801 748 791 768Q781 788 775 808Q768 828 766 844Q763 860 761 892Q758 924 752 952Q746 980 746 990Q746 1000 749 1008Q752 1016 758 1022Q764 1028 768 1030Q772 1031 776 1031Q780 1031 785 1030Q789 1028 795 1024Q800 1019 813 1000Q827 980 835 972Q844 964 857 958Q870 952 885 949Z'/%3E%3Cpath d='M-40 386Q0 375 16 371Q32 367 46 366Q60 364 70 366Q80 367 86 372Q92 376 96 385Q100 394 100 407Q100 420 97 434Q94 448 88 460Q83 472 77 480Q72 487 66 493Q60 498 52 503Q44 508 36 510Q28 512 20 512Q12 513 2 512Q-8 511 -42 500Q-76 490 -86 488Q-96 487 -102 487Q-108 487 -114 489Q-120 491 -128 496Q-136 502 -142 510Q-148 519 -157 541Q-167 564 -173 576Q-180 588 -188 598Q-196 608 -213 626Q-231 644 -237 654Q-243 664 -245 672Q-247 680 -248 688Q-249 696 -247 734Q-245 772 -246 790Q-248 808 -251 816Q-253 824 -258 832Q-264 840 -270 846Q-276 851 -284 855Q-292 860 -300 862Q-308 864 -316 865Q-324 865 -342 863Q-360 861 -368 859Q-376 856 -383 852Q-391 848 -396 844Q-400 840 -405 834Q-410 828 -414 820Q-419 812 -421 804Q-424 796 -426 786Q-428 776 -428 764Q-429 752 -427 734Q-424 716 -421 706Q-417 696 -413 687Q-408 679 -402 670Q-396 661 -388 653Q-380 645 -348 621Q-316 598 -265 549Q-214 500 -203 486Q-193 472 -183 446Q-173 420 -171 416Q-168 412 -164 408Q-160 404 -152 401Q-144 398 -122 399Q-100 399 -90 398Q-80 397 -40 386Z'/%3E%3Cpath d='M860 386Q900 375 916 371Q932 367 946 366Q960 364 970 366Q980 367 986 372Q992 376 996 385Q1000 394 1000 407Q1000 420 997 434Q994 448 988 460Q983 472 977 480Q972 487 966 493Q960 498 952 503Q944 508 936 510Q928 512 920 512Q912 513 902 512Q892 511 858 500Q824 490 814 488Q804 487 798 487Q792 487 786 489Q780 491 772 496Q764 502 758 510Q752 519 743 541Q733 564 727 576Q720 588 712 598Q704 608 687 626Q669 644 663 654Q657 664 655 672Q653 680 652 688Q651 696 653 734Q655 772 654 790Q652 808 649 816Q647 824 642 832Q636 840 630 846Q624 851 616 855Q608 860 600 862Q592 864 584 865Q576 865 558 863Q540 861 532 859Q524 856 517 852Q509 848 504 844Q500 840 495 834Q490 828 486 820Q481 812 479 804Q476 796 474 786Q472 776 472 764Q471 752 473 734Q476 716 479 706Q483 696 487 687Q492 679 498 670Q504 661 512 653Q520 645 552 621Q584 598 635 549Q686 500 697 486Q707 472 717 446Q727 420 729 416Q732 412 736 408Q740 404 748 401Q756 398 778 399Q800 399 810 398Q820 397 860 386Z'/%3E%3Cpath d='M-6 142Q0 138 8 136Q16 134 24 136Q32 137 40 142Q48 147 55 156Q61 164 65 174Q70 184 73 198Q76 212 76 226Q77 240 75 252Q73 264 70 272Q67 280 64 286Q60 292 54 298Q48 304 42 308Q36 313 26 317Q16 322 6 326Q-4 329 -16 331Q-28 333 -38 333Q-48 334 -62 331Q-76 328 -89 320Q-103 312 -111 304Q-119 296 -125 288Q-131 280 -133 274Q-136 268 -135 264Q-135 260 -129 252Q-123 244 -97 222Q-72 200 -50 179Q-28 158 -20 152Q-12 145 -6 142Z'/%3E%3Cpath d='M894 142Q900 138 908 136Q916 134 924 136Q932 137 940 142Q948 147 955 156Q961 164 965 174Q970 184 973 198Q976 212 976 226Q977 240 975 252Q973 264 970 272Q967 280 964 286Q960 292 954 298Q948 304 942 308Q936 313 926 317Q916 322 906 326Q896 329 884 331Q872 333 862 333Q852 334 838 331Q824 328 811 320Q797 312 789 304Q781 296 775 288Q769 280 767 274Q764 268 765 264Q765 260 771 252Q777 244 803 222Q828 200 850 179Q872 158 880 152Q888 145 894 142Z'/%3E%3Cpath d='M212 -134Q208 -129 206 -122Q205 -116 205 -110Q205 -104 207 -96Q209 -88 212 -80Q216 -72 228 -54Q240 -36 246 -30Q252 -24 260 -18Q268 -13 280 -9Q292 -4 306 -4Q320 -4 338 -7Q356 -11 373 -17Q389 -24 397 -29Q404 -35 409 -41Q413 -48 416 -58Q419 -68 419 -80Q419 -92 417 -108Q415 -124 410 -140Q406 -156 401 -169Q396 -183 386 -203Q376 -223 371 -238Q365 -252 365 -286Q365 -320 363 -328Q362 -336 359 -342Q357 -348 352 -352Q348 -357 340 -359Q332 -362 322 -361Q312 -361 304 -359Q295 -356 292 -352Q289 -348 288 -342Q288 -336 292 -326Q295 -316 307 -290Q319 -264 320 -256Q321 -248 320 -242Q318 -236 314 -228Q309 -220 302 -212Q294 -204 261 -178Q227 -152 221 -146Q215 -140 212 -134Z'/%3E%3Cpath d='M212 766Q208 771 206 778Q205 784 205 790Q205 796 207 804Q209 812 212 820Q216 828 228 846Q240 864 246 870Q252 876 260 882Q268 887 280 891Q292 896 306 896Q320 896 338 893Q356 889 373 883Q389 876 397 871Q404 865 409 859Q413 852 416 842Q419 832 419 820Q419 808 417 792Q415 776 410 760Q406 744 401 731Q396 717 386 697Q376 677 371 662Q365 648 365 614Q365 580 363 572Q362 564 359 558Q357 552 352 548Q348 543 340 541Q332 538 322 539Q312 539 304 541Q295 544 292 548Q289 552 288 558Q288 564 292 574Q295 584 307 610Q319 636 320 644Q321 652 320 658Q318 664 314 672Q309 680 302 688Q294 696 261 722Q227 748 221 754Q215 760 212 766Z'/%3E%3Cpath d='M387 419Q384 434 384 451Q383 468 387 480Q390 492 393 495Q396 499 400 501Q404 504 414 507Q424 510 462 514Q500 519 522 518Q544 517 554 514Q564 512 572 509Q580 505 588 500Q596 495 605 488Q613 480 621 470Q628 460 634 448Q639 436 642 424Q645 412 649 382Q654 352 658 340Q662 328 671 316Q680 304 701 286Q722 268 725 262Q729 256 728 250Q727 244 721 232Q714 220 685 182Q656 143 647 130Q637 116 627 95Q616 75 612 69Q607 64 602 60Q597 56 587 51Q576 47 564 45Q552 43 542 45Q532 46 526 51Q520 55 518 58Q516 62 515 67Q514 72 514 78Q515 84 517 90Q519 96 524 104Q529 112 544 130Q560 149 566 162Q573 176 575 194Q577 212 575 228Q573 244 567 254Q562 264 553 272Q544 279 536 284Q527 288 494 302Q460 315 450 322Q440 328 433 334Q427 340 419 349Q412 358 406 369Q399 380 395 392Q390 404 387 419Z'/%3E%3Cpath d='M454 394Q452 400 451 410Q451 420 453 426Q455 432 457 436Q460 440 464 444Q468 448 474 452Q480 455 492 459Q504 462 518 462Q532 462 544 458Q556 454 565 447Q573 440 579 430Q584 419 585 408Q586 396 585 390Q584 384 581 378Q579 372 571 365Q564 358 554 354Q544 351 536 351Q528 351 520 352Q512 352 498 357Q484 362 474 370Q464 378 460 383Q457 388 454 394Z'/%3E%3C/g%3E%3C/svg%3E");
+        --fx-texture-size: 900px 900px;
+        --fx-texture-opacity: 0;
+    }
+
+    /* The field is static and anchored to the page: it scrolls with the content, repeats
+       on both axes over the whole page height, and never moves on its own (Kenny,
+       2026-10-07: no drift, no fixed layer). So it is the body's background, and the
+       shared fixed overlay (body::after) is switched off for this theme. */
+    [data-theme='forest'] body {
+        background-image: var(--fx-texture);
+        background-size: var(--fx-texture-size);
+        background-repeat: repeat;
+        background-attachment: scroll;
+    }
+
+    [data-theme='forest'] body::after {
+        display: none;
     }
 
     /* The typefaces the theme declares [TH12].
@@ -3829,7 +2905,7 @@
         body {
             /* Twice the theme's own duration: a full-page sweep should be
          * slower than a button, but it is still the incoming theme that
-         * decides how it arrives. Terminal snaps, sepia drifts. */
+         * decides how it arrives. Terminal snaps, pastel eases slowly. */
             transition:
                 background-color calc(var(--fx-duration, 200ms) * 2) var(--fx-ease, ease),
                 color calc(var(--fx-duration, 200ms) * 2) var(--fx-ease, ease);
@@ -4092,13 +3168,8 @@
        the terminal register puts a block cursor inside the focused field,
        at the caret, where a terminal's cursor actually is. */
 
-        /* forest — the contour layer drifts, slowly enough to read as weather
-       rather than as motion. 40 seconds for one pass. */
-        [data-theme='forest'] body::after {
-            /* ::after, where the texture actually is [KT6]. The duration reads
-         * a knob with the old literal as its fallback. */
-            animation: kp-drift var(--kp-drift-duration, 40s) linear infinite;
-        }
+        /* forest — the contour field does not move: it is a static page background
+       (see the forest texture rule above). */
 
         /* blueprint — lifted to a register [S48, LIFT_PLAN row 6]: the
        ruled line under a heading is now the register's own `rule` hook,
@@ -4133,10 +3204,6 @@
         [data-theme='solstice'] [data-slot='card'] {
             animation: kp-ember calc(var(--fx-duration) * 6) var(--fx-ease) both;
         }
-
-        /* sepia and high-contrast have no signature, deliberately. Sepia is
-       the restful theme and high-contrast is the accessible one; in both,
-       a gesture would be working against the reason the theme exists. */
     }
 
     @keyframes kp-slide-in {

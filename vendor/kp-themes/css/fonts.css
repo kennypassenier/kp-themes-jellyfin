@@ -10,7 +10,7 @@
    the renamed family the build gave it (R6-Q1): the tokens name that
    family first and the original after it, for a reader who has it. */
 
-/* Instrument Sans — OFL-1.1, fonts/instrumentsans/LICENSE; named by formal, light, dark, pastel, forest, sepia, blueprint, solstice, retro */
+/* Instrument Sans — OFL-1.1, fonts/instrumentsans/LICENSE; named by formal, light, dark, pastel, forest, blueprint, solstice */
 @font-face {
     font-family: 'Instrument Sans';
     font-style: italic;
@@ -100,41 +100,7 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Atkinson Hyperlegible — OFL-1.1, fonts/atkinsonhyperlegible/LICENSE; named by high-contrast */
-@font-face {
-    font-family: 'Atkinson Hyperlegible';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('../fonts/atkinsonhyperlegible/atkinsonhyperlegible-bold.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Atkinson Hyperlegible';
-    font-style: italic;
-    font-weight: 700;
-    font-display: swap;
-    src: url('../fonts/atkinsonhyperlegible/atkinsonhyperlegible-bolditalic.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Atkinson Hyperlegible';
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../fonts/atkinsonhyperlegible/atkinsonhyperlegible-italic.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Atkinson Hyperlegible';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('../fonts/atkinsonhyperlegible/atkinsonhyperlegible-regular.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Instrument Serif — OFL-1.1, fonts/instrumentserif/LICENSE; named by sepia, solstice */
+/* Instrument Serif — OFL-1.1, fonts/instrumentserif/LICENSE; named by solstice */
 @font-face {
     font-family: 'Instrument Serif';
     font-style: italic;
@@ -318,42 +284,6 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* KP Shade Sans (renamed from Source Sans 3, Reserved Font Name 'Source') — OFL-1.1, fonts/sourcesans3/LICENSE; named by shade-light, shade-dark */
-@font-face {
-    font-family: 'KP Shade Sans';
-    font-style: normal;
-    font-weight: 200 900;
-    font-display: swap;
-    src: url('../fonts/sourcesans3/sourcesans3-variable.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'KP Shade Sans';
-    font-style: italic;
-    font-weight: 200 900;
-    font-display: swap;
-    src: url('../fonts/sourcesans3/sourcesans3-italic-variable.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Source Serif 4 — OFL-1.1, fonts/sourceserif4/LICENSE; named by shade-light, shade-dark */
-@font-face {
-    font-family: 'Source Serif 4';
-    font-style: italic;
-    font-weight: 200 900;
-    font-display: swap;
-    src: url('../fonts/sourceserif4/sourceserif4-italic-variable.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Source Serif 4';
-    font-style: normal;
-    font-weight: 200 900;
-    font-display: swap;
-    src: url('../fonts/sourceserif4/sourceserif4-variable.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 /* Geist Mono — OFL-1.1, fonts/geistmono/LICENSE; named by blueprint */
 @font-face {
     font-family: 'Geist Mono';
@@ -361,16 +291,6 @@
     font-weight: 100 900;
     font-display: swap;
     src: url('../fonts/geistmono/geistmono-variable.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Pixelify Sans — OFL-1.1, fonts/pixelifysans/LICENSE; named by retro */
-@font-face {
-    font-family: 'Pixelify Sans';
-    font-style: normal;
-    font-weight: 400 700;
-    font-display: swap;
-    src: url('../fonts/pixelifysans/pixelifysans-variable.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -408,42 +328,6 @@
     font-display: swap;
     src: url('../fonts/archivo/archivo-variable.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* Vazirmatn — OFL-1.1, fonts/vazirmatn/LICENSE; named by lapis */
-@font-face {
-    font-family: 'Vazirmatn';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url('../fonts/vazirmatn/vazirmatn-variable-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Vazirmatn';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url('../fonts/vazirmatn/vazirmatn-variable-arabic.woff2') format('woff2');
-    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
-}
-
-/* Markazi Text — OFL-1.1, fonts/markazitext/LICENSE; named by lapis */
-@font-face {
-    font-family: 'Markazi Text';
-    font-style: normal;
-    font-weight: 400 700;
-    font-display: swap;
-    src: url('../fonts/markazitext/markazitext-variable-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-    font-family: 'Markazi Text';
-    font-style: normal;
-    font-weight: 400 700;
-    font-display: swap;
-    src: url('../fonts/markazitext/markazitext-variable-arabic.woff2') format('woff2');
-    unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
 }
 
 /* Titillium Web — OFL-1.1, fonts/titilliumweb/LICENSE; named by nostromo */
@@ -500,7 +384,7 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* VT323 — OFL-1.1, fonts/vt323/LICENSE; named by synthwave, retro */
+/* VT323 — OFL-1.1, fonts/vt323/LICENSE; named by synthwave */
 @font-face {
     font-family: 'VT323';
     font-style: normal;

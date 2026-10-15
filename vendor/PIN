@@ -1,7 +1,7 @@
 # The kp-themes release this repository builds from. scripts/vendor-kp-themes.sh moves it;
 # gates/check-vendor.mjs holds vendor/kp-themes/ to it. sums is the sha256 of that
 # release's SHA256SUMS, which scripts/fetch-fonts.sh checks the fonts against.
-version 10.1.0
-sha256 7a14a59819dfba82c73e3d5dfd472a78c61cb11cf2a89babe18e2fc379fa64f4
-sums 2681aa84ac4f6c926b050f5b3d29ea241b84d48956598856cd865d1b843d3e2c
-url https://github.com/kennypassenier/kp-themes/releases/download/v10.1.0/tokens.tar
+version 10.1.1
+sha256 e5293b231526ecf6e39f55514d55341a5ef5dc0c9b95a0859eee4ab4415809a8
+sums 64293d649951557ed50c65ee4177af86ffa115b65839a7e322b941325fd699da
+url https://github.com/kennypassenier/kp-themes/releases/download/v10.1.1/tokens.tar
